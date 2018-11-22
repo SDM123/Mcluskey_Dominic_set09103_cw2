@@ -1,0 +1,91 @@
+<html>
+<head>
+   <title>The VOID</title>
+   <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" />
+   <style>
+      body{
+         padding-top: 50px;
+         background-color: white;
+      }
+   </style>
+</head>
+<body>
+
+   <nav class="navbar navbar-inverse navbar-fixed-top">
+   <div class="container">
+      <div class="navbar-header">
+         <button type="button" class="navbar-toggle collapsed"
+         data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+         aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">The VOID</a>
+         </div>
+         <div id="navbar" class="collapse navbar-collapse">
+         <ul class="nav navbar-nav">
+            <li><a href="/Hottest">Hottest</a></li>
+            <li><a href="/Newest">Newest</a></li>
+            <li><a href="/Categories">Categories</a></li>
+            <li><a href="/SLogin">Login/Sign up</a></li>
+         </ul>
+         </div>
+      </div>
+   </nav>
+
+   <div class="container">
+       <h1>Political insults</h1>
+
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="well">
+           <p>iJohn</p>
+          </div>
+        </div>
+        <div class="col-sm-9">
+          <div class="well">
+            <p>Your teeth are almost as crooked, as the political party you support.</p>
+          <p><a href="/Tags">Tags</a></p>
+          <p>
+             <span class="label label-default">Political</span>
+             <span class="label label-default">Teeth</span>
+             <span class="label label-default">Appearance</span>
+          </p>
+             <button type="button" class="btn btn-Success">Like<span class="badge">20</span></button>
+             <button type="button" class="btn btn-Danger">Dislike<span class="badge">5</span></button>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="well">
+           <p>OrangeManBad</p>
+          </div>
+        </div>
+        <div class="col-sm-9">
+          <div class="well">
+            <p>Putting Trump next to you makes it look like a smart well composed man is in the whitehouse. But then you leave and the bar is raised.</p>
+          <p><a href="/Tags">Tags</a></p>
+          <p>
+             <span class="label label-default">Political</span>
+             <span class="label label-default">Indirect</span>
+             <span class="label label-default">Intelligence</span>
+          </p>
+             <button type="button" class="btn btn-Success">Like<span class="badge">7</span></button>
+             <button type="button" class="btn btn-Danger">Dislike<span class="badge">15</span></button>
+          </div>
+        </div>
+      </div>
+
+
+   </div>
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+   <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+</body>
+</html>
