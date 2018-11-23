@@ -1,9 +1,30 @@
-from flask import Flask, render_template
+from functools import wraps
+from flask import Flask, render_template, redirect, request, session
 app = Flask(__name__)
+
 
 @app.route('/')
 def root():
    return render_template('Home.html'), 200
+
+
+#@app.route("/Register", methods=['GET', 'POST'])
+#def register():
+#   if request.method == 'POST'
+#   username = request.form['usr-s']
+#   password = request.form['psw-s']
+#   password-repeat = request.form['psw-repeat']
+#   if(username is not None and password is not None and password-repeat == password):
+#      db = get_db()
+#      db.cursor().execute("INSERT INTO users(username,password) VALUES (?,?,?)", (username, password))
+#      db.commit()
+#      return redirect(url_for('.SLogin'))
+#return render_template('SLogin.html')
+
+
+@app.route('/Congrats')
+def congrats():
+   return render_template('Congrats.html'), 200
 
 @app.route('/Hottest')
 def hottest():
@@ -16,6 +37,8 @@ def newest():
 @app.route('/SLogin')
 def slogin():
    return render_template('SLogin.html'), 200
+
+
 
 @app.route('/Tags')
 def tags():

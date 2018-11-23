@@ -1,6 +1,6 @@
-DROP TABLE if EXISTS albums;
+DROP TABLE if EXISTS users;
 
-CREATE TABLE albums (
+CREATE TABLE users (
    username text, 
    password text
 );
