@@ -62,14 +62,28 @@
       <p> fault and you are stupid</p>
       <hr>
 
-      <label for="usr"><b>Username</b></label>
-      <input type="username" placeholder="Enter Username" name="usr" required>
+      <label for="usr-s"><b>Username</b></label>
+      <input type="username" placeholder="Enter Username" name="usr-s" required>
 
-      <label for="psw"><b>Password</b></label>
-      <input type="psw" placeholder="Enter Password" name="psw" required>
+      <label for="psw-s"><b>Password</b></label>
+      <input type="password" value="FakePSW" id="psw-s">
+      <input type="checkbox" onclick="myFunction()">Show Password
 
-      <label for="psw-repeat"><b>Repeat Password</b></label>
-      <input type="psw-repeat" placeholder="Repeat Password" name="psw-repeat" required>
+      <label for="password"><b>Repeat Password</b></label>
+      <input type="password" value="FakePSW" id="psw-repeat">
+
+
+<script>
+function myFunction() {
+    var x = document.getElementById("psw-s");
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+}
+</script>
+
 
       <p>By creating an account you agree that nothing on this site is serious</p>
       <p> and hope that the person coding this knows how to encrypt.</p>
@@ -91,11 +105,23 @@
       <p>Login, like just do it</p>
       <hr>
 
-      <label for="usr"><b>Username</b></label>
-      <input type="username" placeholder="Enter Username" name="usr" required>
+      <label for="usr-l"><b>Username</b></label>
+      <input type="username" placeholder="Enter Username" name="usr-l" required>
 
-      Password: <input type="psw" value="FakePSW" id="myInput">
-      <input type="checkbox" onclick="myFunction()">Show Password
+      <label for="psw-l"><b>Password</b></label>
+      <input type="password" value="FakePSW" id="psw-l">
+      <input type="checkbox" onclick="myFunction1()">Show Password
+      
+<script>
+function myFunction1() {
+    var x = document.getElementById("psw-l");
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+}
+</script>
 
       <p>You should already know what is in store for you.</p>
 
