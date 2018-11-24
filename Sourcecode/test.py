@@ -38,6 +38,8 @@ def init_db_values():
          db.cursor().execute('insert into users values ("OrangeManBad", "isFake")')
          db.cursor().execute('insert into users values ("ZaNPC", "isFake")')
          db.cursor().execute('insert into users values ("Monty", "isFake")')
+
+         db.cursor().execute('insert into insults values ("BadBoiiiiiii", "Your voice is so annoying.", "Voice", "Simple", "", "", "", "", "1", "20")')
       db.commit()
 
 @app.route("/")

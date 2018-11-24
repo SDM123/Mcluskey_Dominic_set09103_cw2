@@ -59,6 +59,13 @@ def debug():
       page.append(str(row))
       page.append('</li>')
 
+   sql = "SELECT * FROM insults ORDER BY username"
+   for row in db.cursor().execute(sql):
+      page.append('<li>')
+      page.append(str(row))
+      page.append('</li>')  
+ 
+   
    page.append('</ul></html>')
    return ''.join(page)
 
@@ -121,7 +128,23 @@ def login():
             return redirect(url_for('.lcongrats'))
          return render_template('Error-l.html')
 
+@app.route("/Send", methods=['GET'. 'POST'])
+def send():
+   if request.method == 'POST'
+   
+      username = session['user']
+      insult = request.form('new_insult')
+      tag1 = request.form('tag1')
+      tag2 = request.form('tag2')
+      tag3 = request.form('tag3')
+      tag4 = request.form('tag4')
+      tag5 = request.form('tag5')
+      tag6 = request.form('tag6')
+      likes = "0"
+      dislikes = "0"
 
+      db = get_db()
+      db.cursor().execute("INSERT INTO insults("
 
 @app.route('/Congrats-s')
 def scongrats():
