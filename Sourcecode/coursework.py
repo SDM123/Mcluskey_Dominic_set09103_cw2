@@ -1,6 +1,46 @@
+import bcrypt
 from functools import wraps
-from flask import Flask, render_template, redirect, request, session
+from flask import Flask, render_template, redirect, request, session, g, url_for
+import sqlite3
 app = Flask(__name__)
+db_location = 'var/Data.db'
+
+def get_db():
+   db = getattr(g, 'db', None)
+   if db is None:
+      db = sqlite3.connect(db_location)
+      g.db = db
+   return db
+
+
+@app.teardown_appcontext
+def close_db_connection(exception):
+   db = getattr(g, 'db', None)
+   if db is not None:
+      db.close()
+
+
+def init_db():
+   with app.app_context():
+      db = get_db()
+      with app.open_resource('schema.sql', mode='r') as f:
+         db.cursor().executescript(f.read())
+      db.commit()
+
+
+@app.route('/Debug')
+def debug():
+   db = get_db() 
+   page = []
+   page.append('<html><ul>')
+   sql = "SELECT * FROM users ORDER BY username"
+   for row in db.cursor().execute(sql):
+      page.append('<li>')
+      page.append(str(row))
+      page.append('</li>')
+
+   page.append('</ul></html>')
+   return ''.join(page)
 
 
 @app.route('/')
@@ -8,18 +48,25 @@ def root():
    return render_template('Home.html'), 200
 
 
-#@app.route("/Register", methods=['GET', 'POST'])
-#def register():
-#   if request.method == 'POST'
-#   username = request.form['usr-s']
-#   password = request.form['psw-s']
-#   password-repeat = request.form['psw-repeat']
-#   if(username is not None and password is not None and password-repeat == password):
-#      db = get_db()
-#      db.cursor().execute("INSERT INTO users(username,password) VALUES (?,?,?)", (username, password))
-#      db.commit()
-#      return redirect(url_for('.SLogin'))
-#return render_template('SLogin.html')
+@app.route("/Register", methods=['GET', 'POST'])
+def register():
+   if request.method == 'POST':
+      username = request.form['usr-s']
+      password = request.form['psw-s']
+      passwordrepeat = request.form['psw-repeat']
+     
+      username = username.encode('utf-8')
+      password = password.encode('utf-8')
+      
+      susr = bcrypt.hashpw(username, bcrypt.gensalt())
+      spwd = bcrypt.hashpw(password, bcrypt.gensalt())
+      
+      if(username is not None and password is not None and passwordrepeat == password):
+         db = get_db()
+         db.cursor().execute("INSERT INTO users(username,password) VALUES (?,?)", (susr, spwd))
+         db.commit()
+         return redirect(url_for('.congrats'))
+   return render_template('SLogin.html')
 
 
 @app.route('/Congrats')
