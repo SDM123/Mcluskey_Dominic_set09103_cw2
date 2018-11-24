@@ -29,13 +29,30 @@ def init_db():
       db.commit()
 
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
-valid_pwhash = bcrypt.hashpw('secretpass', bcrypt.gensalt())
+#valid_pwhash = bcrypt.hashpw('secretpass', bcrypt.gensalt())
 
 
-def check_auth(username, password):
-   if(valid_pwhash == bcrypt.hashpw(password.encode('utf-8'), valid_pwhash)):
-      return True
-   return False
+#def check_auth(username, password):
+
+#  valid_pwhash = bcrypt.hashpw(password, bcrypt.gensalt())
+    
+#   passwordcheck = "Error"
+    
+#   db = get_db()
+#   data = db.cursor().execute("SELECT password FROM users WHERE username = '"+username+"'")
+#   data = data.fetchall()
+#   passwords = {pwd[0] for row in data}
+#   
+#   foreach(pwd in passwords)
+#   {
+#   if(valid_pwhash == bcrypt.hashpw(pwd.encode('utf-8'), valid_pwhash)):
+#      return True
+#   return False
+#   }
+
+   #if(valid_pwhash == bcrypt.hashpw(passwordcheck.encode('utf-8'), valid_pwhash)):
+    #  return True
+   #return False
 
 
 def requires_login(f):
