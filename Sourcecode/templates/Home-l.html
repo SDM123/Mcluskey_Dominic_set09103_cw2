@@ -266,8 +266,33 @@
 		<textarea rows="3" cols="50" id="new_insult" name="new_insult"
                 placeholder="Type in your insult" style="font-size: 30pt"></textarea>
                 <h6 class="pull-right">500 characters remaining</h6>
-                <button class="btn btn-info" type="submit">Post New Insults</button>
+                <!--<button class="btn btn-info" type="submit">Post New Insults</button>
+            !--></form>
+
+            <!--New comments container--!>
+            <form name="insult" action="/Send" method="POST">
+            <div class="row">
+               <div class="col-sm-3">
+                  <label for="new_insult">Insult:</label>
+                  <textarea class="form-control" row="3" name="new_insult"></textarea>
+               </div>
+            </div>
+         </div>
+
+         <div class="row">
+            <div class="col-sm-3">
+            </div>
+          
+            <form action="/Send">
+               <input type="submit" value="Send" />
             </form>
+         </div>
+      </form>
+      </div>
+      </div>
+   </div>
+</div>
+                
             
             
             <input type="text" value="" name="tag1" id="tag1">
