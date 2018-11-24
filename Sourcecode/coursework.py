@@ -65,7 +65,10 @@ def debug():
 
 @app.route('/')
 def root():
-   return render_template('Home.html'), 200
+   status = session.get('logged_in', False)
+   if not status:
+      return render_template('Home.html'), 200
+   return render_template('Home-l.html'), 200
 
 
 @app.route("/Register", methods=['GET', 'POST'])
