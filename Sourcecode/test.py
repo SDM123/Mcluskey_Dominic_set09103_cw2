@@ -25,6 +25,21 @@ def init_db():
          db.cursor().executescript(f.read())
       db.commit()
 
+def init_db_values():
+   with app.app_context():
+      db = get_db()
+      with app.open_resource('schema.sql', mode='r') as f:
+         db.cursor().execute('insert into users values ("iJohn", "isFake")')
+         db.cursor().execute('insert into users values ("AmJooke", "isFake")')
+         db.cursor().execute('insert into users values ("katZ", "isFake")')
+         db.cursor().execute('insert into users values ("BadBoiiiiiii", "isFake")')
+         db.cursor().execute('insert into users values ("GreenMean", "isFake")')
+         db.cursor().execute('insert into users values ("FranztheBaddie", "isFake")')
+         db.cursor().execute('insert into users values ("OrangeManBad", "isFake")')
+         db.cursor().execute('insert into users values ("ZaNPC", "isFake")')
+         db.cursor().execute('insert into users values ("Monty", "isFake")')
+      db.commit()
+
 @app.route("/")
 def root():
    db = get_db()

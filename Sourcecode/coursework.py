@@ -29,30 +29,6 @@ def init_db():
       db.commit()
 
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
-#valid_pwhash = bcrypt.hashpw('secretpass', bcrypt.gensalt())
-
-
-#def check_auth(username, password):
-
-#  valid_pwhash = bcrypt.hashpw(password, bcrypt.gensalt())
-    
-#   passwordcheck = "Error"
-    
-#   db = get_db()
-#   data = db.cursor().execute("SELECT password FROM users WHERE username = '"+username+"'")
-#   data = data.fetchall()
-#   passwords = {pwd[0] for row in data}
-#   
-#   foreach(pwd in passwords)
-#   {
-#   if(valid_pwhash == bcrypt.hashpw(pwd.encode('utf-8'), valid_pwhash)):
-#      return True
-#   return False
-#   }
-
-   #if(valid_pwhash == bcrypt.hashpw(passwordcheck.encode('utf-8'), valid_pwhash)):
-    #  return True
-   #return False
 
 
 def requires_login(f):
@@ -68,6 +44,7 @@ def requires_login(f):
 @app.route('/Logout')
 def logout():
    session['logged_in'] = False
+   session['user'] = None
    return redirect(url_for('.root'))
 
 
@@ -127,13 +104,19 @@ def login():
       
       username = request.form['usr-l']
       password = request.form['psw-l']
-   
-      #if check_auth(password 
       
-
-      #if(str is not None):
-       #  return redirect(url_for('.lcongrats'))
-   return render_template('Error-l.html')
+      db = get_db()
+      data = db.cursor().execute("SELECT username, password FROM users WHERE username = '"+username+"'") 
+      data = data.fetchall()
+      
+      password = password.encode('utf-8')
+       
+      for value in (data):
+         if (username == value[0] and value[1].encode('utf-8') == bcrypt.hashpw(password, value[1].encode('utf-8'))):
+            session['logged_in'] = True
+            session['user'] = username
+            return redirect(url_for('.lcongrats'))
+         return render_template('Error-l.html')
 
 
 
@@ -167,8 +150,10 @@ def newest():
 
 @app.route('/SLogin')
 def slogin():
-   return render_template('SLogin.html'), 200
-
+   status = session.get('logged_in', False)
+   if not status:
+       return render_template('SLogin.html'), 200
+   return render_template('Logout.html'), 200
 
 
 @app.route('/Tags')
