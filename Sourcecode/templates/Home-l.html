@@ -259,6 +259,7 @@
       </div>
 
 
+
        <div class="container">
 	<div class="row">
 		<div class="col-sm-3" style="padding-bottom:20">
@@ -266,25 +267,39 @@
 		<textarea rows="3" cols="50" id="new_insult" name="new_insult"
                 placeholder="Type in your insult" style="font-size: 30pt"></textarea>
                 <h6 class="pull-right">500 characters remaining</h6>
-                <!--<button class="btn btn-info" type="submit">Post New Insults</button>
-            !--></form>
+                <button class="btn btn-info" type="submit">Post New Insults</button>
+            </form>
+
+
 
             <!--New comments container--!>
-            <form name="insult" action="/Send" method="POST">
-            <div class="row">
-               <div class="col-sm-3">
-                  <label for="new_insult">Insult:</label>
-                  <textarea class="form-control" row="3" name="new_insult"></textarea>
-               </div>
+
+
+<!--         
+   <form name="message_form" action="/Send" method="POST"
+   <div class="row">
+      <div class="col-sm-3">
+      </div>
+     
+      <div class="col-sm-9">
+         <div class="col-sm-9">
+            <div class="form-group">
+               <label for="comment">Comment:</label>
+               <textarea class="form-control" rows="3" cols="50" style="font-size: 30pt" name="messagebody"></textarea>
             </div>
          </div>
+      </div>
+      
+      <form action="/Send"> 
+         <input type="submit" value="Send your insults"/>
+      </form>
+      
+      <label for="tag1"><b>Tag1</b></label>
+      <input type="tag1" value="" name="tag1" id="tag1"          
 
-         <div class="row">
-            <div class="col-sm-3">
-            </div>
-          
+
             <form action="/Send">
-               <input type="submit" value="Send" />
+               <input type="submit" value="Send your insult" />
             </form>
          </div>
       </form>
@@ -292,9 +307,9 @@
       </div>
    </div>
 </div>
-                
-            
-            
+               
+    --!>        
+                       
             <input type="text" value="" name="tag1" id="tag1">
             <label for="tag1"><b>Tag1</b></label>            
 
@@ -312,6 +327,7 @@
 
             <input type="text" value="" name="tag6" id="tag6">            
             <label for="tag6"><b>Tag6</b></label>
+
         </div>
 	</div>
 </div>

@@ -129,26 +129,33 @@ def login():
          return render_template('Error-l.html')
 
 
-@app.route("/Send", methods=['GET', 'POST'])
+@app.route('/Send', methods=['GET', 'POST'])
 def send():
    if request.method == 'POST':
-   
+      
       username = session['user']
-      insult = request.form('new_insult')
-      tag1 = request.form('tag1')
-      tag2 = request.form('tag2')
-      tag3 = request.form('tag3')
-      tag4 = request.form('tag4')
-      tag5 = request.form('tag5')
-      tag6 = request.form('tag6')
-      likes = "0"
-      dislikes = "0"
+      #insult = request.form['new_insult']
+      #tag1 = request.form['tag1']
+      #tag2 = request.form['tag2']      
 
-      db = get_db()
-      db.cursor().execute("INSERT INTO insults(username,insult,tag1,tag2,tag3,tag4,tag5,tag6,likes,dislikes) VALUES (?,?,?,?,?,?,?,?,?,?)", (username, insult, tag1, tag2, tag3, tag4, tag5, tag6, likes, dislikes))
-      db.commit()
-      return render_template('Home-l.html'), 200
 
+      return render_template('Congrats-s.html')
+      #username = session['user']
+      #tag1 = request.form['tag1']
+      #tag2 = request.form['tag2']
+      #tag3 = request.form['tag3']
+      #tag4 = request.form['tag4']
+      #tag5 = request.form['tag5']
+      #tag6 = request.form['tag6']
+      #insult = request.form['comment']
+      #likes = "0"
+      #dislikes = "0"
+
+      #db = get_db()
+      #db.cursor().execute("INSERT INTO insults(username,insult,tag1,tag2,tag3,tag4,tag5,tag6,likes,dislikes) VALUES (?,?,?,?,?,?,?,?,?,?)", (username, insult, tag1, tag2, tag3, tag4, tag5, tag6, likes, dislikes))
+      #db.commit()
+      #return redirect(url_for('.lcongrats'))
+#return render_template('Congrats-s.html')
 
 @app.route('/Congrats-s')
 def scongrats():
