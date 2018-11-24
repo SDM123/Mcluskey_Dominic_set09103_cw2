@@ -5,6 +5,7 @@ import sqlite3
 app = Flask(__name__)
 db_location = 'var/Data.db'
 
+
 def get_db():
    db = getattr(g, 'db', None)
    if db is None:
@@ -26,6 +27,31 @@ def init_db():
       with app.open_resource('schema.sql', mode='r') as f:
          db.cursor().executescript(f.read())
       db.commit()
+
+app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
+valid_pwhash = bcrypt.hashpw('secretpass', bcrypt.gensalt())
+
+
+def check_auth(username, password):
+   if(valid_pwhash == bcrypt.hashpw(password.encode('utf-8'), valid_pwhash)):
+      return True
+   return False
+
+
+def requires_login(f):
+   @wraps(f)
+   def decorated(*args, **kwargs):
+      status = session.get('logged_in', False)
+      if not status:
+         return redirect(url_for('.root'))
+      return f(*args, **kwargs)
+   return decorated
+
+
+@app.route('/Logout')
+def logout():
+   session['logged_in'] = False
+   return redirect(url_for('.root'))
 
 
 @app.route('/Debug')
@@ -55,23 +81,64 @@ def register():
       password = request.form['psw-s']
       passwordrepeat = request.form['psw-repeat']
      
-      username = username.encode('utf-8')
       password = password.encode('utf-8')
       
-      susr = bcrypt.hashpw(username, bcrypt.gensalt())
       spwd = bcrypt.hashpw(password, bcrypt.gensalt())
+     
+      check = False
+       
+      db = get_db()
+      data = db.cursor().execute("SELECT username FROM users WHERE username = '"+username+"'")
+      data = data.fetchall()
+      names = {name[0] for name in data}
       
-      if(username is not None and password is not None and passwordrepeat == password):
+      if(username in names):
+         check = True
+       
+       
+      if(username is not None and password is not None and passwordrepeat == password and check is False):
          db = get_db()
-         db.cursor().execute("INSERT INTO users(username,password) VALUES (?,?)", (susr, spwd))
+         db.cursor().execute("INSERT INTO users(username,password) VALUES (?,?)", (username, spwd))
          db.commit()
-         return redirect(url_for('.congrats'))
-   return render_template('SLogin.html')
+         return redirect(url_for('.scongrats'))
+   return render_template('Error-s.html')
 
 
-@app.route('/Congrats')
-def congrats():
-   return render_template('Congrats.html'), 200
+@app.route("/Login", methods=['GET', 'POST'])
+def login():
+   if request.method == 'POST':
+      
+      username = request.form['usr-l']
+      password = request.form['psw-l']
+   
+      #if check_auth(password 
+      
+
+      #if(str is not None):
+       #  return redirect(url_for('.lcongrats'))
+   return render_template('Error-l.html')
+
+
+
+@app.route('/Congrats-s')
+def scongrats():
+   return render_template('Congrats-s.html'), 200
+
+
+@app.route('/Congrats-l')
+def lcongrats():
+   return render_template('Congrats-l.html'), 200
+
+
+@app.route('/Error-l')
+def lerror():
+   return render_template('Error-l.html'), 200
+
+
+@app.route('/Error-s')
+def serror():
+   return render_template('Error-s.html'), 200
+
 
 @app.route('/Hottest')
 def hottest():
