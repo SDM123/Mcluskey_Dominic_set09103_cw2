@@ -128,9 +128,10 @@ def login():
             return redirect(url_for('.lcongrats'))
          return render_template('Error-l.html')
 
-@app.route("/Send", methods=['GET'. 'POST'])
+
+@app.route("/Send", methods=['GET', 'POST'])
 def send():
-   if request.method == 'POST'
+   if request.method == 'POST':
    
       username = session['user']
       insult = request.form('new_insult')
@@ -144,7 +145,10 @@ def send():
       dislikes = "0"
 
       db = get_db()
-      db.cursor().execute("INSERT INTO insults("
+      db.cursor().execute("INSERT INTO insults(username,insult,tag1,tag2,tag3,tag4,tag5,tag6,likes,dislikes) VALUES (?,?,?,?,?,?,?,?,?,?)", (username, insult, tag1, tag2, tag3, tag4, tag5, tag6, likes, dislikes))
+      db.commit()
+      return render_template('Home-l.html'), 200
+
 
 @app.route('/Congrats-s')
 def scongrats():
