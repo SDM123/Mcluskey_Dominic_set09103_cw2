@@ -53,12 +53,14 @@ def debug():
    db = get_db() 
    page = []
    page.append('<html><ul>')
+   page.append('<li>Users</li>')
    sql = "SELECT * FROM users ORDER BY username"
    for row in db.cursor().execute(sql):
       page.append('<li>')
       page.append(str(row))
       page.append('</li>')
 
+   page.append('<li>Insults</li>')
    sql = "SELECT * FROM insults ORDER BY username"
    for row in db.cursor().execute(sql):
       page.append('<li>')
@@ -134,23 +136,23 @@ def send():
    if request.method == 'POST':
       
       username = session['user']
-      #insult = request.form['new_insult']
-      #tag1 = request.form['tag1']
-      #tag2 = request.form['tag2']      
+      insult = request.form['new_insult']
+      tag1 = request.form['tag1']
+      tag2 = request.form['tag2']      
+      tag3 = request.form['tag3']
+      tag4 = request.form['tag4']
+      tag5 = request.form['tag5']
+      tag6 = request.form['tag6']
+      likes = 0
+      dislikes = 0      
 
+  
+      db = get_db()
+      db.cursor().execute("INSERT INTO insults(username,insult,tag1,tag2,tag3,tag4,tag5,tag6,likes,dislikes) Values (?,?,?,?,?,?,?,?,?,?)", (username, insult, tag1, tag2, tag3, tag4, tag5, tag6, likes, dislikes))
+      db.commit()
+            
 
-      return render_template('Congrats-s.html')
-      #username = session['user']
-      #tag1 = request.form['tag1']
-      #tag2 = request.form['tag2']
-      #tag3 = request.form['tag3']
-      #tag4 = request.form['tag4']
-      #tag5 = request.form['tag5']
-      #tag6 = request.form['tag6']
-      #insult = request.form['comment']
-      #likes = "0"
-      #dislikes = "0"
-
+      return render_template('Home-l.html')
       #db = get_db()
       #db.cursor().execute("INSERT INTO insults(username,insult,tag1,tag2,tag3,tag4,tag5,tag6,likes,dislikes) VALUES (?,?,?,?,?,?,?,?,?,?)", (username, insult, tag1, tag2, tag3, tag4, tag5, tag6, likes, dislikes))
       #db.commit()
