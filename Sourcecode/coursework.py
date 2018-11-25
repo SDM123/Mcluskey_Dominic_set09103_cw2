@@ -212,7 +212,42 @@ def root():
     
    page.append('</html>')
    return ''.join(page)"""
-   return render_template('Home-l.html')
+    
+   username = []
+   insult = []
+   tag1 = []
+   tag2 = []
+   tag3 = []
+   tag4 = []
+   tag5 = []
+   tag6 = []
+   likes = []
+   dislikes = []
+
+   count = []
+   number = 0
+
+
+   db = get_db()
+   data = db.cursor().execute("SELECT * FROM insults")
+   data = data.fetchall()
+   for value in (data):
+      username.append(value[0])
+      insult.append(value[1])
+      tag1.append(value[2])
+      tag2.append(value[3])
+      tag3.append(value[4])
+      tag4.append(value[5])
+      tag5.append(value[6])
+      tag6.append(value[7])
+      likes.append(value[8])
+      dislikes.append(value[9])
+      count.append(number)
+      number = number + 1
+       
+
+
+   return render_template('Home-l.html', count = count, username = username, insult = insult, tag1 = tag1, tag2 = tag2, tag3 = tag3, tag4 = tag4, tag5 = tag5, tag6 = tag6, likes = likes, dislikes = dislikes)
 
 
 
