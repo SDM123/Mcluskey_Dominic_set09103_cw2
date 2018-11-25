@@ -16,6 +16,6 @@ Create Table insults (
    tag4 text,
    tag5 text,
    tag6 text,
-   likes text,
-   dislikes text
+   likes INT,
+   dislikes INT
 );

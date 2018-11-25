@@ -36,227 +36,44 @@
       </div>
    </nav>
 
+
    <div class="container">
        <h1>Newest</h1>
-       <p>This is all the newest insults.</p>
+       <p>This is the 3 newest insults.</p>
 
+       {% for num in count %}
 
-      <div class="row">
+        <div class="row">
         <div class="col-sm-3">
-          <div class="well">
-           <p>iJohn</p>
-          </div>
+        <div class="well">
+        <p>{{username[num-1]}}</p>
+        </div>
         </div>
         <div class="col-sm-9">
-          <div class="well">
-            <p>Your teeth are almost as crooked, as the political party you support.</p>
-          <p><a href="/Tags">Tags</a></p>
-          <p>
-             <span class="label label-default">Political</span>
-             <span class="label label-default">Teeth</span>
-             <span class="label label-default">Appearance</span>
-          </p>
-             <button type="button" class="btn btn-Success">Like<span class="badge">20</span></button>
-             <button type="button" class="btn btn-Danger">Dislike<span class="badge">5</span></button>
-          </div>
+        <div class="well">
+        <p>{{insult[num-1]}}</p>
+        <p><a href="/Tags">Tags</a></p>
+        <p>
+        <span class="label label-default">{{tag1[num-1]}}</span>
+        <span class="label label-default">{{tag2[num-1]}}</span>
+        <span class="label label-default">{{tag3[num-1]}}</span>
+        <span class="label label-default">{{tag4[num-1]}}</span>
+        <span class="label label-default">{{tag5[num-1]}}</span>
+        <span class="label label-default">{{tag6[num-1]}}</span>
+        </p>
+        <button type="button" class="btn btn-Success">Like<span class="badge">{{likes[num-1]}}</span></button>
+        <button type="button" class="btn btn-Danger">Dislike<span class="badge">{{dislikes[num-1]}}</span></button>
         </div>
-      </div>
+        </div>
+        </div>
+
+       {% endfor %}
 
 
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="well">
-           <p>AmJooke</p>
-          </div>
-        </div>
-        <div class="col-sm-9">
-          <div class="well">
-            <p>Your mother is such a nice lady, shame she won't walk again with so much dissapointment weighing her down.</p>
-          <p><a href="/Tags">Tags</a></p>
-          <p>
-             <span class="label label-default">Your mother</span>
-             <span class="label label-default">Subversion</span>
-             <span class="label label-default">Dissapointment</span>
-             <span class="label label-default">Disability</span>
-          </p>
-             <button type="button" class="btn btn-Success">Like<span class="badge">43</span></button>
-             <button type="button" class="btn btn-Danger">Dislike<span class="badge">2</span></button>
-          </div>
-        </div>
-      </div>
 
 
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="well">
-           <p>katZ</p>
-          </div>
-        </div>
-        <div class="col-sm-9">
-          <div class="well">
-            <p>Your forehead is more like a 10head. Thats 10 more head than you'll ever get.</p>
-          <p><a href="/Tags">Tags</a></p>
-          <p>
-             <span class="label label-default">Virgin shaming</span>
-             <span class="label label-default">Appearance</span>
-          </p>
-             <button type="button" class="btn btn-Success">Like<span class="badge">10</span></button>
-             <button type="button" class="btn btn-Danger">Dislike<span class="badge">2</span></button>
-          </div>
-        </div>
-      </div>
 
 
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="well">
-           <p>BadBoiiiiiii</p>
-          </div>
-        </div>
-        <div class="col-sm-9">
-          <div class="well">
-            <p>Your voice is so annoying.</p>
-          <p><a href="/Tags">Tags</a></p>
-          <p>
-             <span class="label label-default">Voice</span>
-             <span class="label label-default">Simple</span>
-          </p>
-             <button type="button" class="btn btn-Success">Like<span class="badge">1</span></button>
-             <button type="button" class="btn btn-Danger">Dislike<span class="badge">20</span></button>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="well">
-           <p>iJohn</p>
-          </div>
-        </div>
-        <div class="col-sm-9">
-          <div class="well">
-            <p>Have you ever considered why you such a hard time with romantic encounters? You'd assume its because of your bad hair, bad skin and fugly bod. But no that doesn't come close to describing your flaws.</p>
-          <p><a href="/Tags">Tags</a></p>
-          <p>
-             <span class="label label-default">Virgin shaming</span>
-             <span class="label label-default">Hair</span>
-             <span class="label label-default">Skin</span>
-             <span class="label label-default">Appearance</span>
-             <span class="label label-default">Subversion</span>
-          </p>
-             <button type="button" class="btn btn-Success">Like<span class="badge">10</span></button>
-             <button type="button" class="btn btn-Danger">Dislike<span class="badge">10</span></button>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="well">
-           <p>GreenMean</p>
-          </div>
-        </div>
-        <div class="col-sm-9">
-          <div class="well">
-            <p>I'd call you a sheep shagger but sheep have higher standards.</p>
-          <p><a href="/Tags">Tags</a></p>
-          <p>
-             <span class="label label-default">Beastiality</span>
-             <span class="label label-default">Virgin shaming?</span>
-             <span class="label label-default">Sheep</span>
-          </p>
-             <button type="button" class="btn btn-Success">Like<span class="badge">10</span></button>
-             <button type="button" class="btn btn-Danger">Dislike<span class="badge">15</span></button>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="well">
-           <p>FranztheBaddie</p>
-          </div>
-        </div>
-        <div class="col-sm-9">
-          <div class="well">
-            <p>I wish a zombie apocalypse happens so I can kill you twice.</p>
-          <p><a href="/Tags">Tags</a></p>
-          <p>
-             <span class="label label-default">Zombie</span>
-             <span class="label label-default">Killing</span>
-          </p>
-             <button type="button" class="btn btn-Success">Like<span class="badge">5</span></button>
-             <button type="button" class="btn btn-Danger">Dislike<span class="badge">2</span></button>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="well">
-           <p>OrangeManBad</p>
-          </div>
-        </div>
-        <div class="col-sm-9">
-          <div class="well">
-            <p>Putting Trump next to you makes it look like a smart well composed man is in the whitehouse. But then you leave and the bar is raised.</p>
-          <p><a href="/Tags">Tags</a></p>
-          <p>
-             <span class="label label-default">Political</span>
-             <span class="label label-default">Indirect</span>
-             <span class="label label-default">Intelligence</span>
-          </p>
-             <button type="button" class="btn btn-Success">Like<span class="badge">7</span></button>
-             <button type="button" class="btn btn-Danger">Dislike<span class="badge">15</span></button>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="well">
-           <p>ZaNPC</p>
-          </div>
-        </div>
-        <div class="col-sm-9">
-          <div class="well">
-            <p>You so ugly hello kitty says "bye bye" to you.</p>
-          <p><a href="/Tags">Tags</a></p>
-          <p>
-             <span class="label label-default">Hello Kitty</span>
-             <span class="label label-default">Appearance</span>
-             <span class="label label-default">Pun</span>
-          </p>
-             <button type="button" class="btn btn-Success">Like<span class="badge">30</span></button>
-             <button type="button" class="btn btn-Danger">Dislike<span class="badge">2</span></button>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="well">
-           <p>Monty</p>
-          </div>
-        </div>
-        <div class="col-sm-9">
-          <div class="well">
-            <p>Your mother was a hamster and your father smelt of elderberries.</p>
-          <p><a href="/Tags">Tags</a></p>
-          <p>
-             <span class="label label-default">Reference</span>
-          </p>
-             <button type="button" class="btn btn-Success">Like<span class="badge">10</span></button>
-             <button type="button" class="btn btn-Danger">Dislike<span class="badge">5</span></button>
-          </div>
-        </div>
-      </div>
 
    </div>
 
