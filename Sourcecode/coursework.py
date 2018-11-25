@@ -326,7 +326,7 @@ def send():
       db.commit()
             
 
-      return render_template('Home-l.html')
+      return redirect(url_for('.root'))
       #db = get_db()
       #db.cursor().execute("INSERT INTO insults(username,insult,tag1,tag2,tag3,tag4,tag5,tag6,likes,dislikes) VALUES (?,?,?,?,?,?,?,?,?,?)", (username, insult, tag1, tag2, tag3, tag4, tag5, tag6, likes, dislikes))
       #db.commit()
