@@ -47,29 +47,29 @@ def logout():
    session['user'] = None
    return redirect(url_for('.root'))
 
+#Removed for security purposes
+#@app.route('/Debug')
+#def debug():
+#   db = get_db() 
+#   page = []
+#   page.append('<html><ul>')
+#   page.append('<li>Users</li>')
+#   sql = "SELECT * FROM users ORDER BY username"
+#   for row in db.cursor().execute(sql):
+#      page.append('<li>')
+#      page.append(str(row))
+#      page.append('</li>')
 
-@app.route('/Debug')
-def debug():
-   db = get_db() 
-   page = []
-   page.append('<html><ul>')
-   page.append('<li>Users</li>')
-   sql = "SELECT * FROM users ORDER BY username"
-   for row in db.cursor().execute(sql):
-      page.append('<li>')
-      page.append(str(row))
-      page.append('</li>')
-
-   page.append('<li>Insults</li>')
-   sql = "SELECT * FROM insults ORDER BY username"
-   for row in db.cursor().execute(sql):
-      page.append('<li>')
-      page.append(str(row))
-      page.append('</li>')  
+#   page.append('<li>Insults</li>')
+#   sql = "SELECT * FROM insults ORDER BY username"
+#   for row in db.cursor().execute(sql):
+#      page.append('<li>')
+#      page.append(str(row))
+#      page.append('</li>')  
  
    
-   page.append('</ul></html>')
-   return ''.join(page)
+#   page.append('</ul></html>')
+#   return ''.join(page)
 
 
 @app.route('/')
@@ -437,6 +437,10 @@ def pun():
 @app.route('/Tags/Reference')
 def reference():
    return render_template('Reference.html'), 200
+
+@app.errorhandler(404)
+def page_not_found(error):
+   return render_template('Error.html')
 
 if __name__ == "__main__":
    app.run(host='0.0.0.0', debug=True)
