@@ -76,142 +76,43 @@ def debug():
 def root():
    status = session.get('logged_in', False)
    if not status:
-      return render_template('Home.html'), 200
+      
+      username = []
+      insult = []
+      tag1 = []
+      tag2 = []
+      tag3 = []
+      tag4 = []
+      tag5 = []
+      tag6 = []
+      likes = []
+      dislikes = []
 
-   """page = []
-   page.append('''
-<html>
-<head>
-   <title>The VOID</title>
-   <link href="{{ 'Mcluskey_Dominic_set09103_cw2/Sourcecode/static/', filename='css/bootstrap.min.css') }}" rel="stylesheet" />
-   <style>
-      body{
-         padding-top: 50px;
-         background-color: white;
-      }
-   </style>
-</head>
-<body>
+      count = []
+      number = 0
 
-   <nav class="navbar navbar-inverse navbar-fixed-top">
-   <div class="container">
-      <div class="navbar-header">
-         <button type="button" class="navbar-toggle collapsed"
-         data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-         aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">The VOID</a>
-         </div>
-         <div id="navbar" class="collapse navbar-collapse">
-         <ul class="nav navbar-nav">
-            <li><a href="/Hottest">Hottest</a></li>
-            <li><a href="/Newest">Newest</a></li>
-            <li><a href="/Categories">Categories</a></li>
-            <li><a href="/SLogin">Login/Sign up</a></li>
-         </ul>
-         </div>
-      </div>
-   </nav>
 
-   <div class="container">
-       <h1>Home</h1>
-       <p>Now you can post insults down below.</p>
-''')
-   
-   db = get_db()
-   data = db.cursor().execute("SELECT * FROM insults")
-   data = data.fetchall()
-   
-   for value in (data):
-        
-        page.append('''     
+      db = get_db()
+      data = db.cursor().execute("SELECT * FROM insults")
+      data = data.fetchall()
+      for value in (data):
+         username.append(value[0])
+         insult.append(value[1])
+         tag1.append(value[2])
+         tag2.append(value[3])
+         tag3.append(value[4])
+         tag4.append(value[5])
+         tag5.append(value[6])
+         tag6.append(value[7])
+         likes.append(value[8])
+         dislikes.append(value[9])
+         count.append(number)
+         number = number + 1
+       
 
-        <div class="row">
-        <div class="col-sm-3">
-          <div class="well">
-           <p>''')
-        page.append(value[0])
-        page.append('''        
-           </p>
-          </div>
-        </div>
-        <div class="col-sm-9">
-          <div class="well">
-            <p>''')
-        page.append(value[1])
-        page.append(''' 
-            </p>
-          <p><a href="/Tags">Tags</a></p>
-          <p>
-             <span class="label label-default">
-        ''')
-        page.append(value[2])
-        page.append('''</span>
-             <span class="label label-default">''')
-        page.append(value[3])
-        page.append('''</span>
-             <span class="label label-default">''')
-        page.append(value[4])
-        page.append('''</span>
-             <span class="label label-default">''')
-        page.append(value[5])
-        page.append('''</span>
-             <span class="label label-default">''')
-        page.append(value[6])
-        page.append('''</span>
-             <span class="label label-default">''')
-        page.append(value[7])
-        page.append('''</span>
-          </p>
-             <button type="button" class="btn btn-Success">Like<span class="badge">''')
-        page.append(value[8])
-        page.append('''</span></button>
-             <button type="button" class="btn btn-Danger">Dislike<span class="badge">''')
-        page.append(value[9])
-        page.append('''</span></button>
-          </div>
-        </div>
-        </div>''')
-   
-   page.append('''<div class="container">
-	<div class="row">
-		<div class="col-sm-3" style="padding-bottom:20">
-            <form accept-charset="UTF-8" action="/Send" method="POST">
-		<textarea rows="3" cols="50" id="new_insult" name="new_insult"
-                placeholder="Type in your insult" style="font-size: 30pt"></textarea>
-                <button class="btn btn-info" type="submit">Post New Insults</button>
-        ''')
-   page.append('''            <input type="text" value="" name="tag1" id="tag1">
-            <label for="tag1"><b>Tag1</b></label>            
-            <input type="text" value="" name="tag2" id="tag2">
-            <label for="tag2"><b>Tag2</b></label>
-          
-            <input type="text" value="" name="tag3" id="tag3">
-            <label for="tag3"><b>Tag3</b></label>         
-            <input type="text" value="" name="tag4" id="tag4">
-            <label for="tag4"><b>Tag4</b></label>
-          
-            <input type="text" value="" name="tag5" id="tag5">
-            <label for="tag5"><b>Tag5</b></label> 
-            <input type="text" value="" name="tag6" id="tag6">            
-            <label for="tag6"><b>Tag6</b></label>
-          </form>
-        </div>
-	</div>
-</div>
-   </div>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-   <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-</body>''')
 
-    
-   page.append('</html>')
-   return ''.join(page)"""
+      return render_template('Home.html', count = count, username = username, insult = insult, tag1 = tag1, tag2 = tag2, tag3 = tag3, tag4 = tag4, tag5 = tag5, tag6 = tag6, likes = likes, dislikes = dislikes)
+
     
    username = []
    insult = []

@@ -41,74 +41,34 @@
        <p>This page will have the top 3 insults of all time.</p>
 
 
+       {% for num in count %}
 
-
-
-  <div class="row">
+        <div class="row">
         <div class="col-sm-3">
-          <div class="well">
-           <p>AmJooke</p>
-          </div>
+        <div class="well">
+        <p>{{username[num]}}</p>
+        </div>
         </div>
         <div class="col-sm-9">
-          <div class="well">
-            <p>Your mother is such a nice lady, shame she won't walk again with so much dissapointment weighing her down.</p>
-          <p><a href="/Tags">Tags</a></p>
-          <p>
-             <span class="label label-default">Your mother</span>
-             <span class="label label-default">Subversion</span>
-             <span class="label label-default">Dissapointment</span>
-             <span class="label label-default">Disability</span>
-          </p>
-             <button type="button" class="btn btn-Success">Like<span class="badge">43</span></button>
-             <button type="button" class="btn btn-Danger">Dislike<span class="badge">2</span></button>
-          </div>
+        <div class="well">
+        <p>{{insult[num]}}</p>
+        <p><a href="/Tags">Tags</a></p>
+        <p>
+        <span class="label label-default">{{tag1[num]}}</span>
+        <span class="label label-default">{{tag2[num]}}</span>
+        <span class="label label-default">{{tag3[num]}}</span>
+        <span class="label label-default">{{tag4[num]}}</span>
+        <span class="label label-default">{{tag5[num]}}</span>
+        <span class="label label-default">{{tag6[num]}}</span>
+        </p>
+        <button type="button" class="btn btn-Success">Like<span class="badge">{{likes[num]}}</span></button>
+        <button type="button" class="btn btn-Danger">Dislike<span class="badge">{{dislikes[num]}}</span></button>
         </div>
-      </div>
+        </div>
+        </div>
 
+       {% endfor %}
 
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="well">
-           <p>ZaNPC</p>
-          </div>
-        </div>
-        <div class="col-sm-9">
-          <div class="well">
-            <p>You so ugly hello kitty says "bye bye" to you.</p>
-          <p><a href="/Tags">Tags</a></p>
-          <p>
-             <span class="label label-default">Hello Kitty</span>
-             <span class="label label-default">Appearance</span>
-             <span class="label label-default">Pun</span>
-          </p>
-             <button type="button" class="btn btn-Success">Like<span class="badge">30</span></button>
-             <button type="button" class="btn btn-Danger">Dislike<span class="badge">2</span></button>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="well">
-           <p>iJohn</p>
-          </div>
-        </div>
-        <div class="col-sm-9">
-          <div class="well">
-            <p>Your teeth are almost as crooked, as the political party you support.</p>
-          <p><a href="/Tags">Tags</a></p>
-          <p>
-             <span class="label label-default">Political</span>
-             <span class="label label-default">Teeth</span>
-             <span class="label label-default">Appearance</span>
-          </p>
-             <button type="button" class="btn btn-Success">Like<span class="badge">20</span></button>
-             <button type="button" class="btn btn-Danger">Dislike<span class="badge">5</span></button>
-          </div>
-        </div>
-      </div>      
 
 
 
